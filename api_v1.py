@@ -9,8 +9,8 @@ why   : rest endpoints (v1) for the Foo microservice
 # python modules
 
 # pip/conda modules
-import aiohttp_cors
 from aiohttp import web
+import aiohttp_cors
 
 # Foo Inc modules
 
