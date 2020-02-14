@@ -1,13 +1,21 @@
-Build the docker image:
+Run these commands from the `ops` folder.
 
-`$ docker build --rm -f "dockerfile" -t microservicefromscratch:1.0 "."`
+Build the web app docker image:
 
-Run the container:
+`$ ./build_foo_docker_image.sh`
 
-`$ docker run -p 5501:5501 --name microservice_from_scratch -d microservicefromscratch:1.0`
+Run the stack:
+
+`$ docker-compose up`
+
+Bootstrap the database (only needs to happen once), found in the `db` folder:
+
+`$ ./bootstrap_foo_db.sh`
 
 Test:
 
-`$ curl http://127.0.0.1/foo/1` to get a foo
+`$ curl http://127.0.0.1/foo/1` to get a Foo
 
-More examples to come
+`$ curl -X POST http://127.0.0.1:5501/foo --data '{"foo": "foo_attr"}'` to create a new Foo
+
+More to comegit
