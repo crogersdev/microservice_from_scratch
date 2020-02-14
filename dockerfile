@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM orbitalinsight/services3:latest
 
 ADD app.py /
 ADD api_v1.py /

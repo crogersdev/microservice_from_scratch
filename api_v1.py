@@ -13,6 +13,8 @@ from aiohttp import web
 import aiohttp_cors
 
 # Foo Inc modules
+from api_impl import FooSvcImpl
+
 
 routes = web.RouteTableDef()
 
@@ -28,6 +30,7 @@ async def get_foo_by_id(request):
 
 @routes.post('/foo')
 async def add_foo(body):
+    
     print('im supposed to add a new foo')
     pass
 
