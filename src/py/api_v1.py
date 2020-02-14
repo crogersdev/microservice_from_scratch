@@ -7,7 +7,6 @@ why   : rest endpoints (v1) for the Foo microservice
 """
 
 # python modules
-import logging
 
 # pip/conda modules
 from aiohttp import web
@@ -22,7 +21,6 @@ routes = web.RouteTableDef()
 
 @routes.get('/foo/{foo_id}')
 async def get_foo_by_id(request):
-
     foo_id = request.get('foo_id')
 
     foo_svc_impl = FooSvcImpl()
@@ -40,7 +38,7 @@ async def add_foo(body):
     foo_svc_impl = FooSvcImpl()
     status = foo_svc_impl.add_foo(body)
 
-    print('im supposed to add a new foo')
+    print("I'm supposed to add a new foo")
     return web.Response(
         body=f"New foo created! {status}",
         status=200
