@@ -17,8 +17,9 @@ class FooSvcImpl():
     def __init__(self):
         pass
 
-    def get_foo(foo_id):
-        pass
+    def get_foo(self, foo_id):
+        print(f"Retriving Foo {foo_id} from database!")
+        return f"Foo+{foo_id}"
 
-    def add_foo(new_foo):
+    def add_foo(self, new_foo):
         pass

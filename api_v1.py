@@ -7,13 +7,14 @@ why   : rest endpoints (v1) for the Foo microservice
 """
 
 # python modules
+import logging
 
 # pip/conda modules
 from aiohttp import web
 import aiohttp_cors
 
 # Foo Inc modules
-from api_impl import FooSvcImpl
+from FooSvcImpl import FooSvcImpl
 
 
 routes = web.RouteTableDef()
@@ -21,7 +22,13 @@ routes = web.RouteTableDef()
 
 @routes.get('/foo/{foo_id}')
 async def get_foo_by_id(request):
-    print('i got a foo id')
+
+    foo_id = request.get('foo_id')
+
+    foo_svc_impl = FooSvcImpl()
+    _ = foo_svc_impl.get_foo(foo_id)
+
+    print(f"Returning a foo, foo_id: {foo_id}")
     return web.Response(
         body="Here's your foo!",
         status=200
@@ -30,9 +37,14 @@ async def get_foo_by_id(request):
 
 @routes.post('/foo')
 async def add_foo(body):
-    
+    foo_svc_impl = FooSvcImpl()
+    status = foo_svc_impl.add_foo(body)
+
     print('im supposed to add a new foo')
-    pass
+    return web.Response(
+        body=f"New foo created! {status}",
+        status=200
+    )
 
 
 def create_foo_webapp(loop):
