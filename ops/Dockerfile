@@ -1,4 +1,4 @@
-FROM orbitalinsight/services3:latest
+FROM python:3.8-slim
 
 COPY src/py /microservice
 COPY ops/requirements.txt /
